@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1450" height="560" viewBox="0 0 1450 560" font-family="Helvetica, Arial, sans-serif">
+  <!-- Component tree of src/app. Orange boxes are the four route screens; each is expanded in the next diagrams. -->
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="#eef4f8"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#9db8c9" stroke-width="1.5"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+    <marker id="open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#222" stroke-width="1.5"/>
+    </marker>
+    <marker id="super" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M1,1 L11,6 L1,11 z" fill="#ffffff" stroke="#222" stroke-width="1.2"/>
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7">
+      <circle cx="5" cy="5" r="4" fill="#222"/>
+    </marker>
+  </defs>
+  <style>
+    .box { stroke: #222; stroke-width: 1.5; }
+    .pub { fill: #e8652b; }
+    .priv { fill: #ffffff; }
+    .ext { fill: url(#hatch); }
+    .type { fill: #ffffff; stroke: #222; stroke-width: 1.5; }
+    .sep { stroke: #222; stroke-width: 1; }
+    .note { fill: #ffffff; stroke: #222; stroke-width: 1.2; }
+    .region { fill: none; stroke: #777; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .rlbl { font-size: 12px; fill: #555; font-style: italic; }
+    .t1 { font-size: 13px; fill: #111; text-anchor: middle; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .sig { font-size: 11px; fill: #333; text-anchor: middle; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .t2 { font-size: 11px; fill: #333; text-anchor: middle; }
+    .cname { font-size: 13px; fill: #111; text-anchor: middle; }
+    .abs { font-style: italic; }
+    .stereo { font-size: 10px; fill: #555; text-anchor: middle; }
+    .mem { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .code { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; white-space: pre; }
+    .msg { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .lbl { font-size: 11px; fill: #333; }
+    .edge { fill: none; stroke: #222; stroke-width: 1.3; }
+    .dash { fill: none; stroke: #222; stroke-width: 1.3; stroke-dasharray: 5 4; }
+    .anchor { fill: none; stroke: #555; stroke-width: 1.1; stroke-dasharray: 3 3; }
+    .life { fill: none; stroke: #777; stroke-width: 1.1; stroke-dasharray: 4 4; }
+    .act { fill: #ffffff; stroke: #222; stroke-width: 1.2; }
+    .frag { fill: none; stroke: #777; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .flbl { font-size: 12px; fill: #555; font-style: italic; }
+    .title { font-size: 15px; fill: #111; }
+  </style>
+  <rect width="1450" height="560" fill="#ffffff"/>
+  <text class="title" x="20" y="28">Symmie web client: app shell, providers and routes</text>
+
+  <rect class="region" x="25" y="50" width="1400" height="480"/>
+  <text class="rlbl" x="35" y="67">src/app, with the route screens from src/features</text>
+  <path class="edge" d="M225,108 H285" marker-end="url(#arrow)"/>
+  <text class="lbl" x="235" y="100">renders</text>
+  <path class="edge" d="M465,108 H525" marker-end="url(#arrow)"/>
+  <text class="lbl" x="475" y="100">renders</text>
+  <path class="edge" d="M705,108 H765" marker-end="url(#arrow)"/>
+  <text class="lbl" x="715" y="100">renders</text>
+  <path class="edge" d="M945,108 H1005" marker-end="url(#arrow)"/>
+  <text class="lbl" x="955" y="100">renders</text>
+  <path class="dash" d="M855.0,131 V160.5 H855.0 V190" marker-end="url(#arrow)"/>
+  <text class="lbl" x="868" y="168">status is locked or first run</text>
+  <path class="edge" d="M1019,131 V364.0"/>
+  <path class="edge" d="M1019,190.0 H1033" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1019,248.0 H1033" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1019,306.0 H1033" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1019,364.0 H1033" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1115.0,384 V417.0 H710.0 V450" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1115.0,384 V417.0 H910.0 V450" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1115.0,384 V417.0 H1110.0 V450" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1115.0,384 V417.0 H1310.0 V450" marker-end="url(#arrow)"/>
+  <text class="lbl" x="1125" y="408">route matches</text>
+  <path class="anchor" d="M300,134 V170"/>
+  <path class="anchor" d="M500,134 V280 H300 V300"/>
+
+  <rect class="box priv" x="45" y="85" width="180" height="46"/>
+  <text class="t1" x="135.0" y="105.0">main</text>
+  <text class="sig" x="135.0" y="121.0">createRoot().render()</text>
+  <rect class="box priv" x="285" y="85" width="180" height="46"/>
+  <text class="t1" x="375.0" y="105.0">App</text>
+  <text class="sig" x="375.0" y="121.0">five nested providers</text>
+  <rect class="box priv" x="525" y="85" width="180" height="46"/>
+  <text class="t1" x="615.0" y="105.0">AppRoutes</text>
+  <text class="sig" x="615.0" y="121.0">route table</text>
+  <rect class="box priv" x="765" y="85" width="180" height="46"/>
+  <text class="t1" x="855.0" y="105.0">LockGate</text>
+  <text class="sig" x="855.0" y="121.0">unlocked ? Outlet</text>
+  <rect class="box priv" x="1005" y="85" width="180" height="46"/>
+  <text class="t1" x="1095.0" y="105.0">AppShell</text>
+  <text class="sig" x="1095.0" y="121.0">layout around Outlet</text>
+  <rect class="box priv" x="765" y="190" width="180" height="46"/>
+  <text class="t1" x="855.0" y="210.0">LockScreen</text>
+  <text class="sig" x="855.0" y="226.0">setup or unlock form</text>
+  <rect class="box priv" x="1033" y="170" width="164" height="40"/>
+  <text class="t1" x="1115.0" y="187.0">TabBar</text>
+  <text class="sig" x="1115.0" y="203.0">four NavLink tabs</text>
+  <rect class="box priv" x="1033" y="228" width="164" height="40"/>
+  <text class="t1" x="1115.0" y="245.0">OfflineBanner</text>
+  <text class="sig" x="1115.0" y="261.0">useOnlineStatus()</text>
+  <rect class="box priv" x="1033" y="286" width="164" height="40"/>
+  <text class="t1" x="1115.0" y="303.0">ToastHost</text>
+  <text class="sig" x="1115.0" y="319.0">useToast()</text>
+  <rect class="box ext" x="1033" y="344" width="164" height="40"/>
+  <text class="t1" x="1115.0" y="361.0">Outlet</text>
+  <text class="sig" x="1115.0" y="377.0">react-router</text>
+  <rect class="box pub" x="620" y="450" width="180" height="46"/>
+  <text class="t1" x="710.0" y="470.0">LogScreen</text>
+  <text class="sig" x="710.0" y="486.0">/log/:date?</text>
+  <rect class="box pub" x="820" y="450" width="180" height="46"/>
+  <text class="t1" x="910.0" y="470.0">AnalysisScreen</text>
+  <text class="sig" x="910.0" y="486.0">/analysis/:tab</text>
+  <rect class="box pub" x="1020" y="450" width="180" height="46"/>
+  <text class="t1" x="1110.0" y="470.0">SummaryScreen</text>
+  <text class="sig" x="1110.0" y="486.0">/summary</text>
+  <rect class="box pub" x="1220" y="450" width="180" height="46"/>
+  <text class="t1" x="1310.0" y="470.0">SettingsScreen</text>
+  <text class="sig" x="1310.0" y="486.0">/settings</text>
+  <path class="note" d="M45,170 H363 L375,182 V254 H45 Z"/>
+  <path class="note" d="M363,170 V182 H375"/>
+  <text class="code" x="55" y="189">&lt;HashRouter&gt;</text>
+  <text class="code" x="55" y="203">  &lt;ClockProvider&gt;</text>
+  <text class="code" x="55" y="217">    &lt;ToastProvider&gt;</text>
+  <text class="code" x="55" y="231">      &lt;SessionProvider passwords={…}&gt;</text>
+  <text class="code" x="55" y="245">        &lt;DiaryProvider repository={…}&gt;</text>
+  <circle cx="300" cy="131" r="3.5" fill="#ffffff" stroke="#222" stroke-width="1.2"/>
+
+  <path class="note" d="M45,300 H473 L485,312 V398 H45 Z"/>
+  <path class="note" d="M473,300 V312 H485"/>
+  <text class="code" x="55" y="319">/                 redirect to /log</text>
+  <text class="code" x="55" y="333">/log/:date?       LogScreen (date defaults to today)</text>
+  <text class="code" x="55" y="347">/analysis/:tab    evolution | year | patterns</text>
+  <text class="code" x="55" y="361">/summary?from&amp;to  SummaryScreen</text>
+  <text class="code" x="55" y="375">/settings         SettingsScreen</text>
+  <text class="code" x="55" y="389">HashRouter: the host needs no rewrite rule for deep links.</text>
+  <circle cx="500" cy="131" r="3.5" fill="#ffffff" stroke="#222" stroke-width="1.2"/>
+
+  <rect x="520" y="215" width="220" height="184" fill="#ffffff" stroke="#222" stroke-width="1"/>
+  <text x="532" y="235" font-size="13" font-weight="bold" fill="#111">Legend</text>
+  <rect class="box pub" x="532" y="247" width="18" height="13"/>
+  <text class="lbl" x="558" y="258">Route screen</text>
+  <rect class="box priv" x="532" y="269" width="18" height="13"/>
+  <text class="lbl" x="558" y="280">Component</text>
+  <rect class="box ext" x="532" y="291" width="18" height="13"/>
+  <text class="lbl" x="558" y="302">Library component</text>
+  <rect class="region" x="532" y="313" width="18" height="13"/>
+  <text class="lbl" x="558" y="324">Folder</text>
+  <path class="edge" d="M532,342 H552" marker-end="url(#arrow)"/>
+  <text class="lbl" x="558" y="346">Renders</text>
+  <path class="dash" d="M532,364 H552" marker-end="url(#arrow)"/>
+  <text class="lbl" x="558" y="368">Renders only in this state</text>
+  <path class="note" d="M532,379 H545 L550,384 V392 H532 Z"/>
+  <text class="lbl" x="558" y="390">Note</text>
+</svg>

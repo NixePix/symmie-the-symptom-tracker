@@ -1,0 +1,11 @@
+/* Print rules for the summary page. The screens are dark; the paper prints dark text on white. */
+@media print {
+  [data-noprint] {
+    display: none !important;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+}

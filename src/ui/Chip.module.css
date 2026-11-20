@@ -1,0 +1,15 @@
+.chip {
+  border: 0;
+  border-radius: 99px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--line);
+  cursor: pointer;
+}
+
+.on {
+  background: var(--ink);
+  color: var(--bg);
+}

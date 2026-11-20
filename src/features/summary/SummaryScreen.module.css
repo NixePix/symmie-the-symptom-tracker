@@ -1,0 +1,30 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+  padding: 0 16px;
+}
+
+.note {
+  color: var(--mute);
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+
+.dates {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.dates > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.error {
+  color: var(--bad);
+  font-size: 13px;
+}

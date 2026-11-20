@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="460" viewBox="0 0 1180 460" font-family="Helvetica, Arial, sans-serif">
+  <!-- Function-structure template: the functions in one or two modules, which calls which and in
+       what order, and the types each returns or raises. For code without classes, or for the
+       inside of one large function split into helpers. Copy it, rename the boxes, delete what the
+       view does not use, and remove from the legend every entry it no longer contains. -->
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="#eef4f8"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#9db8c9" stroke-width="1.5"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+    <marker id="open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#222" stroke-width="1.5"/>
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7">
+      <circle cx="5" cy="5" r="4" fill="#222"/>
+    </marker>
+  </defs>
+  <style>
+    .box { stroke: #222; stroke-width: 1.5; }
+    .pub { fill: #e8652b; }
+    .priv { fill: #ffffff; }
+    .ext { fill: url(#hatch); }
+    .type { fill: #ffffff; stroke: #222; stroke-width: 1.5; }
+    .region { fill: none; stroke: #777; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .rlbl { font-size: 12px; fill: #555; font-style: italic; }
+    .t1 { font-size: 13px; fill: #111; text-anchor: middle; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .sig { font-size: 11px; fill: #333; text-anchor: middle; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .t2 { font-size: 11px; fill: #333; text-anchor: middle; }
+    .lbl { font-size: 11px; fill: #333; }
+    .edge { fill: none; stroke: #222; stroke-width: 1.3; }
+    .dash { fill: none; stroke: #222; stroke-width: 1.3; stroke-dasharray: 5 4; }
+    .title { font-size: 15px; fill: #111; }
+  </style>
+  <rect width="1180" height="460" fill="#ffffff"/>
+
+  <text class="title" x="20" y="28">Reports — Function structure (building a report from a CSV file)</text>
+
+  <rect class="region" x="25" y="55" width="690" height="240"/>
+  <text class="rlbl" x="35" y="73">report/build.py</text>
+  <rect class="region" x="25" y="320" width="690" height="115"/>
+  <text class="rlbl" x="35" y="338">report/model.py</text>
+
+  <!-- Edges before boxes. The number in a call label is the order of the calls. -->
+  <path class="edge" d="M460,113 H595 V193" marker-end="url(#arrow)"/>
+  <text class="lbl" x="602" y="170">1. calls</text>
+  <path class="edge" d="M365,141 V193" marker-end="url(#arrow)"/>
+  <text class="lbl" x="372" y="170">2. calls</text>
+  <path class="edge" d="M270,113 H135 V193" marker-end="url(#arrow)"/>
+  <text class="lbl" x="142" y="170">3. calls</text>
+
+  <path class="edge" d="M690,223 H768" marker-end="url(#open)"/>
+  <text class="lbl" x="722" y="215">iterates</text>
+
+  <path class="edge" d="M595,251 V355" marker-end="url(#dot)"/>
+  <text class="lbl" x="602" y="280">returns</text>
+  <path class="dash" d="M365,251 V353" marker-end="url(#arrow)"/>
+  <text class="lbl" x="372" y="280">raises</text>
+  <path class="edge" d="M135,251 V355" marker-end="url(#dot)"/>
+  <text class="lbl" x="142" y="280">returns</text>
+
+  <!-- Functions: box 190 x 56; name in the title, signature in the subtitle. -->
+  <rect class="box pub" x="270" y="85" width="190" height="56"/>
+  <text class="t1" x="365" y="109">build_report</text>
+  <text class="sig" x="365" y="126">(path: Path) -&gt; Report</text>
+
+  <rect class="box priv" x="40" y="195" width="190" height="56"/>
+  <text class="t1" x="135" y="219">_summarise</text>
+  <text class="sig" x="135" y="236">(rows: list[Row]) -&gt; Report</text>
+
+  <rect class="box priv" x="270" y="195" width="190" height="56"/>
+  <text class="t1" x="365" y="219">_validate</text>
+  <text class="sig" x="365" y="236">(rows: list[Row]) -&gt; None</text>
+
+  <rect class="box priv" x="500" y="195" width="190" height="56"/>
+  <text class="t1" x="595" y="219">_read_rows</text>
+  <text class="sig" x="595" y="236">(path: Path) -&gt; list[Row]</text>
+
+  <rect class="box ext" x="770" y="195" width="170" height="56"/>
+  <text class="t1" x="855" y="219">csv.DictReader</text>
+  <text class="t2" x="855" y="236">standard library</text>
+
+  <!-- Types (dataclass, TypedDict, exception): rounded corners; subtitle says which kind. -->
+  <rect class="type" x="40" y="355" width="190" height="56" rx="12"/>
+  <text class="t1" x="135" y="379">Report</text>
+  <text class="t2" x="135" y="396">frozen dataclass</text>
+
+  <rect class="type" x="270" y="355" width="190" height="56" rx="12"/>
+  <text class="t1" x="365" y="379">ValidationError</text>
+  <text class="t2" x="365" y="396">exception, subclasses ValueError</text>
+
+  <rect class="type" x="500" y="355" width="190" height="56" rx="12"/>
+  <text class="t1" x="595" y="379">Row</text>
+  <text class="t2" x="595" y="396">frozen dataclass</text>
+
+  <!-- Legend: list only the types this view uses. -->
+  <rect x="965" y="55" width="200" height="228" fill="#ffffff" stroke="#222" stroke-width="1"/>
+  <text x="977" y="75" font-size="13" font-weight="bold" fill="#111">Legend</text>
+  <rect class="box pub" x="977" y="87" width="18" height="13"/>
+  <text class="lbl" x="1003" y="98">Public function</text>
+  <rect class="box priv" x="977" y="109" width="18" height="13"/>
+  <text class="lbl" x="1003" y="120">Private function (_name)</text>
+  <rect class="box ext" x="977" y="131" width="18" height="13"/>
+  <text class="lbl" x="1003" y="142">Library function or class</text>
+  <rect class="type" x="977" y="153" width="18" height="13" rx="4"/>
+  <text class="lbl" x="1003" y="164">Type (dataclass, exception)</text>
+  <rect class="region" x="977" y="175" width="18" height="13"/>
+  <text class="lbl" x="1003" y="186">Module (file)</text>
+  <path class="edge" d="M977,204 H997" marker-end="url(#arrow)"/>
+  <text class="lbl" x="1003" y="208">Calls (number = order)</text>
+  <path class="edge" d="M977,226 H997" marker-end="url(#open)"/>
+  <text class="lbl" x="1003" y="230">Calls into a library</text>
+  <path class="edge" d="M977,248 H993" marker-end="url(#dot)"/>
+  <text class="lbl" x="1003" y="252">Returns a value of type</text>
+  <path class="dash" d="M977,270 H997" marker-end="url(#arrow)"/>
+  <text class="lbl" x="1003" y="274">Raises</text>
+</svg>

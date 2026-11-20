@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6c5ce7">
+<title>Symmie – clickable prototype</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <div id="phone"><div id="app"></div></div>
+  <aside id="proto-panel">
+    <h2>Prototype controls</h2>
+    <p>Everything runs in the browser; nothing leaves this page. Data is fake and stored in localStorage.</p>
+    <button data-act="reset">Reset demo data &amp; lock</button>
+    <button data-act="jump-first">Show first-run lock screen</button>
+    <button data-act="toggle-offline">Toggle airplane mode</button>
+    <button data-act="show-install">Show install prompt</button>
+    <button data-act="fire-reminder">Fire reminder notification</button>
+    <h3>Features covered</h3>
+    <ol>
+      <li>Lock</li><li>Log symptoms</li><li>Install / offline</li><li>Evolution graph</li>
+      <li>Day note</li><li>Patterns</li><li>Export &amp; backup</li><li>Reminder</li>
+      <li>One-tap log</li><li>Doctor summary</li><li>Fix &amp; archive</li>
+    </ol>
+  </aside>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

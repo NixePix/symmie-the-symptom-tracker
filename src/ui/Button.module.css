@@ -1,0 +1,32 @@
+.btn {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 99px;
+  padding: 16px;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.primary {
+  background: var(--accent);
+}
+
+.ghost {
+  background: var(--line);
+  color: var(--ink);
+}
+
+.danger {
+  background: #3a1522;
+  color: var(--bad);
+}

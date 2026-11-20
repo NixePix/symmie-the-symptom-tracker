@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d0a1c"><title>Symmie – A: One tap</title><link rel="stylesheet" href="shared.css">
+<style>
+.hero{display:flex;gap:48px;align-items:center;justify-content:space-between;flex-wrap:wrap;position:relative}
+.hero>div:nth-child(2){flex:1 1 380px;min-width:0}.hero h1{font-size:clamp(36px,5vw,58px)}
+.clock{font-size:15px;color:var(--accent2);font-weight:700;margin-top:18px;min-height:24px}
+.pill{background:#26310f;color:var(--accent2);border-radius:99px;padding:6px 12px;font-size:12px;font-weight:700;align-self:flex-start;margin-bottom:6px}
+.done-screen{flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cmp .card b{font-size:42px;letter-spacing:-2px;display:block}
+@media(max-width:700px){.cmp{grid-template-columns:1fr}.phone{width:100%;max-width:340px}}
+</style></head><body><div class="proto-bar">Landing prototype · <a href="index.html">all three</a><a href="a.html">A One tap</a><a href="b.html">B Year in colour</a><a href="c.html">C How are you today?</a> · fake data, nothing leaves this page</div>
+<div class="wrap"><nav class="nav"><a class="logo" href="#"><i></i>Symmie</a><a class="btn small" href="#install">Get the app</a></nav>
+<div class="hero"><div class="glow" style="width:420px;height:420px;background:var(--accent);right:-80px;top:-60px"></div>
+<div><div class="kick">A symptom diary for your phone</div><h1>A bad day should take two seconds to write down.</h1>
+<p class="lead">Symmie asks one question at a time, in big colour bands. Tap a number. Next. Done. Try it, the screen on the right works.</p>
+<p><a class="btn" href="#install">Install Symmie</a> <a class="btn ghost" href="#how">How it works</a></p><div class="clock" id="clock"></div></div>
+<div class="phone" id="ph"></div></div>
+
+<section id="how"><h2>Made for tired thumbs.</h2><div class="grid3">
+<div class="card"><h3>Same as yesterday</h3><p class="mute">One button repeats yesterday's value. A normal day is one tap per symptom, or one tap for all of them.</p></div>
+<div class="card"><h3>Colour says it first</h3><p class="mute">Teal for fine, red for rough. You can read a whole week at a glance, before reading a single number.</p></div>
+<div class="card"><h3>Your own symptoms</h3><p class="mute">Name them yourself. Each is either a strength from 1 to 10 or a plain yes/no.</p></div></div></section>
+
+<section><div class="cmp"><div class="card"><div class="kick">Paper diary</div><b>≈ 90 s</b><p class="mute">Find the pen, find the page, remember the scale you used last time.</p></div>
+<div class="card" style="background:var(--accent2);color:#0d0a1c"><div class="kick" style="color:#3c4a12">Symmie</div><b>≈ 5 s</b><p>Three taps. The phone is already in your hand. <small>(illustrative)</small></p></div></div></section>
+
+<section id="install"><h2>Install it from this page's link.</h2><p class="lead">No app store. It is a web app that installs like an app, and keeps working without a connection.</p>
+<ol class="steps"><li><h3>Open Symmie in Chrome</h3><p class="mute">On your Android phone, tap <b>Open the app</b> below.</p></li><li><h3>Tap "Install"</h3><p class="mute">Chrome offers it at the bottom, or use the menu ⋮ → <i>Install app</i>.</p></li><li><h3>Set your lock</h3><p class="mute">Pick a username and password. They stay on this phone.</p></li></ol>
+<p style="margin-top:24px"><a class="btn lime" href="/app/">Open the app →</a></p></section>
+<footer>Symmie keeps your diary on your phone only. Nothing is sent anywhere. It shows patterns, not medical advice.</footer></div>
+<script>
+const sev=v=>`hsl(${Math.round(170-(v-1)/9*170)} 92% 56%)`;
+const Q=['Headache','Sleep quality','Joint pain'];const words=['none','barely','mild','mild','moderate','moderate','strong','strong','severe','worst'];
+let i=0,vals=[],t0=null;const ph=document.getElementById('ph'),clock=document.getElementById('clock');
+function draw(){
+ if(i>=Q.length){const s=((Date.now()-t0)/1000).toFixed(1);
+  ph.innerHTML='<div class="prog">'+Q.map(()=>'<i class="done"></i>').join('')+'</div><div class="done-screen"><div class="kick">Today</div><div class="qname">Logged.</div><div class="tiles">'+Q.map((q,k)=>'<div class="tile" style="--c:'+sev(vals[k])+'"><small>'+q+'</small><b>'+vals[k]+'</b></div>').join('')+'</div><button class="btn ghost" id="again">Try again</button></div>';
+  clock.textContent='That took you '+s+' seconds.';document.getElementById('again').onclick=()=>{i=0;vals=[];t0=null;clock.textContent='';draw()};return}
+ ph.innerHTML='<div class="kick">Today · '+(i+1)+' of '+Q.length+'</div><div class="prog">'+Q.map((_,k)=>'<i class="'+(k<i?'done':k==i?'cur':'')+'"></i>').join('')+'</div><div class="qname">'+Q[i]+'</div><div class="pill">Yesterday: '+[4,6,3][i]+'</div><div class="scale">'+[...Array(10)].map((_,k)=>'<button class="band" style="--c:'+sev(k+1)+'" data-v="'+(k+1)+'"><b>'+(k+1)+'</b><span>'+words[k]+'</span></button>').join('')+'</div>';
+ ph.querySelectorAll('.band').forEach(b=>b.onclick=()=>{if(t0==null)t0=Date.now();b.classList.add('on');vals[i]=+b.dataset.v;setTimeout(()=>{i++;draw()},260)})}
+draw();
+</script></body></html>

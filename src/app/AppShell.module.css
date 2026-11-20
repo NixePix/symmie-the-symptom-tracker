@@ -1,0 +1,19 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.word {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 0 0 8px;
+}
+
+.tagline {
+  color: var(--mute);
+  margin: 6px 0 0;
+}

@@ -1,0 +1,63 @@
+.note {
+  color: var(--mute);
+  font-size: 13px;
+  margin: 0 0 8px;
+}
+
+.notEnough {
+  margin: 0 0 8px;
+  padding: 10px;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  color: var(--mute);
+  font-size: 14px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  width: 40%;
+  text-align: left;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 4px 0;
+}
+
+.detail {
+  color: var(--mute);
+  font-size: 11px;
+}
+
+.table td {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.track {
+  flex: 1;
+  height: 10px;
+  border-radius: 99px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.track i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+
+.plain {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}

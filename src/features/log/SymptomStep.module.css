@@ -1,0 +1,98 @@
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.name {
+  margin: 0;
+  font-size: 26px;
+}
+
+.scale {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.band {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-left: 6px solid var(--c);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--c) 16%, #13102a);
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.band b {
+  font-size: 20px;
+  width: 28px;
+}
+
+.band span {
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.on {
+  background: var(--c);
+  color: #0d0a1c;
+  box-shadow: 0 0 22px var(--c);
+}
+
+.band.on span {
+  color: #0d0a1c;
+}
+
+.yn {
+  display: flex;
+  gap: 10px;
+  min-height: 260px;
+}
+
+.half {
+  flex: 1;
+  border: 3px solid var(--line);
+  border-radius: 26px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-size: 40px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.no.on {
+  background: #3b3660;
+  border-color: var(--mute);
+}
+
+.yes.on {
+  background: var(--bad);
+  border-color: var(--bad);
+  color: #fff;
+  box-shadow: 0 0 30px var(--bad);
+}
+
+.prev {
+  outline: 2px dashed var(--mute);
+  outline-offset: 2px;
+}
+
+.same {
+  min-height: 52px;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}

@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d0a1c"><title>Symmie – C: How are you today?</title><link rel="stylesheet" href="shared.css">
+<style>
+body{transition:background .4s;background:color-mix(in srgb,var(--c,#4dd8ff) 14%,#0d0a1c)}
+.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.big{font-size:clamp(120px,26vw,260px);font-weight:800;letter-spacing:-8px;line-height:.9;color:var(--c);text-shadow:0 0 80px var(--c);margin:0}
+.say{font-size:22px;max-width:520px;min-height:68px;margin:6px 0 18px}
+input[type=range]{width:min(560px,90%);height:44px;-webkit-appearance:none;appearance:none;background:linear-gradient(90deg,hsl(170 92% 56%),hsl(85 92% 56%),hsl(0 92% 56%));border-radius:99px;height:18px;outline:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;border-radius:50%;background:#fff;border:6px solid var(--c);box-shadow:0 0 24px var(--c)}
+input[type=range]::-moz-range-thumb{width:32px;height:32px;border-radius:50%;background:#fff;border:6px solid var(--c)}
+.q{display:flex;justify-content:space-between;width:min(560px,90%);font-size:12px;color:var(--mute);margin:8px 0 26px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}.chips span{padding:7px 14px;border-radius:99px;border:2px solid color-mix(in srgb,var(--c) 45%,transparent);font-size:13px;font-weight:700;color:#cfc9f0}
+details{background:var(--card);border-radius:var(--r);padding:18px 22px;margin-bottom:10px}summary{cursor:pointer;font-weight:700;font-size:17px}details p{color:#cfc9f0;margin:10px 0 0}
+.lock{display:flex;gap:24px;align-items:center;flex-wrap:wrap}.orb{width:110px;height:110px;border-radius:50%;flex:none;background:conic-gradient(from 200deg,#4dd8ff,#c6ff4d,#ffb347,#ff5d8f,#b18cff,#4dd8ff);filter:drop-shadow(0 0 30px rgba(255,93,143,.6));animation:spin 14s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+</style></head><body><div class="proto-bar">Landing prototype · <a href="index.html">all three</a><a href="a.html">A One tap</a><a href="b.html">B Year in colour</a><a href="c.html">C How are you today?</a> · fake data, nothing leaves this page</div>
+<div class="wrap"><nav class="nav"><a class="logo" href="#"><i></i>Symmie</a><a class="btn small" href="#install">Get the app</a></nav>
+<div class="hero"><div class="kick">Symmie · a symptom diary</div><p class="big" id="n">4</p><div class="say" id="say"></div>
+<input type="range" id="r" min="1" max="10" value="4" aria-label="How are you today"><div class="q"><span>fine</span><span>rough</span></div>
+<a class="btn" href="#install">Start my diary</a><div class="chips" id="chips"></div></div>
+
+<section><h2>Write the number down. Let the app do the rest.</h2><div class="grid3">
+<div class="card"><h3>Log in seconds</h3><p class="mute">One symptom per screen, big colour bands, a "same as yesterday" button.</p></div>
+<div class="card"><h3>Add a day note</h3><p class="mute">Slept badly, long walk, new medicine. One line a day, shown next to the numbers.</p></div>
+<div class="card"><h3>See the shape of it</h3><p class="mute">Graphs over days, weeks and months. Weekday, season and symptom-to-symptom patterns.</p></div></div></section>
+
+<section><div class="lock"><div class="orb"></div><div style="flex:1;min-width:260px"><div class="kick">Private by design</div><h2>Your diary stays in your pocket.</h2><p class="lead">No account, no server, no cloud. The diary is stored on your phone behind a username and password you choose.</p></div></div></section>
+
+<section><h2>Questions</h2>
+<details><summary>Is it free?</summary><p>Yes. It is made for family use, with no ads and no store.</p></details>
+<details><summary>Which phones does it work on?</summary><p>Android, in Chrome. It installs from a link and works without a connection.</p></details>
+<details><summary>What if I lose my phone?</summary><p>The diary is only on the phone. Save a backup file now and then; restoring it on a new phone brings everything back.</p></details>
+<details><summary>Is the password real security?</summary><p>It is a lock against someone borrowing your phone, not against someone who can read its storage. We say so in the app, too.</p></details>
+<details><summary>Does it give medical advice?</summary><p>No. It shows descriptive patterns and nothing more. Show them to your doctor.</p></details></section>
+
+<section id="install"><h2>Install in three taps.</h2>
+<ol class="steps"><li><h3>Open the app</h3><p class="mute">In Chrome on Android.</p></li><li><h3>Install</h3><p class="mute">Menu ⋮ → <i>Install app</i>.</p></li><li><h3>Choose a lock</h3><p class="mute">Username and password, stored on the phone only.</p></li></ol>
+<p style="margin-top:24px"><a class="btn lime" href="/app/">Open the app →</a></p></section>
+<footer>Symmie · made for family use · patterns are not medical advice.</footer></div>
+<script>
+const sev=v=>`hsl(${Math.round(170-(v-1)/9*170)} 92% 56%)`;
+const W=['Nothing today. Log it anyway: good days make the bad ones readable.','A quiet one. Noted.','Mild. Add a note if you know why.','A 4. Probably fine. Tap "same as yesterday" and go on with your day.','Middling. Symmie will remember it was a 5.','Getting heavy. A day note is worth it now.','Rough. Two taps, then rest.','Rough. Two taps, then rest.','A hard day. Writing it down is all you need to do.','The worst. Log it, then look after yourself. The graph can wait.'];
+const r=document.getElementById('r');
+function upd(){const v=+r.value,c=sev(v);document.documentElement.style.setProperty('--c',c);document.body.style.setProperty('--c',c);document.getElementById('n').textContent=v;document.getElementById('say').textContent=W[v-1];}
+r.oninput=upd;upd();
+document.getElementById('chips').innerHTML=['Headache','Sleep','Joint pain','Nausea','Mood','Migraine?'].map(x=>'<span>'+x+'</span>').join('');
+</script></body></html>

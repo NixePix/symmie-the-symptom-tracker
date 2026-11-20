@@ -1,0 +1,22 @@
+.nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tab,
+.on {
+  border: 0;
+  border-radius: 99px;
+  padding: 8px 16px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--mute);
+  background: var(--line);
+  cursor: pointer;
+}
+
+.on {
+  color: var(--bg);
+  background: var(--accent);
+}

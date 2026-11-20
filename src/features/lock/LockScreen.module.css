@@ -1,0 +1,41 @@
+.lock {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 18px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.word {
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  margin: 0;
+}
+
+.tagline {
+  color: var(--mute);
+  margin: 6px 0 14px;
+}
+
+.note {
+  color: var(--mute);
+  font-size: 13px;
+}
+
+.error {
+  color: var(--bad);
+  font-size: 13px;
+  margin: 6px 0;
+}
+
+.rules {
+  color: var(--mute);
+  font-size: 13px;
+  text-align: left;
+  margin: 0 0 10px;
+  padding-left: 22px;
+}

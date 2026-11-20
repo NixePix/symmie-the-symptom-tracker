@@ -1,0 +1,25 @@
+.group {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 99px;
+  background: var(--line);
+}
+
+.seg {
+  flex: 1;
+  border: 0;
+  border-radius: 99px;
+  padding: 10px 8px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--mute);
+  background: transparent;
+  cursor: pointer;
+}
+
+.on {
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+}

@@ -1,0 +1,42 @@
+/* Symmie landing page. Tokens and component styling follow prototype-b ("Night shift"). */
+:root{--bg:#0d0a1c;--card:#181430;--ink:#f3f0ff;--mute:#8d87b3;--accent:#ff5d8f;--accent2:#c6ff4d;--bad:#ff5d6c;--line:#2a2548;--r:22px;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:hidden;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.5px;text-decoration:none}
+.logo i{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 200deg,#4dd8ff,#c6ff4d,#ffb347,#ff5d8f,#b18cff,#4dd8ff);box-shadow:0 0 16px rgba(255,93,143,.6)}
+.btn{background:var(--accent);color:#fff;border-radius:99px;padding:13px 22px;font-weight:700;display:inline-block;text-decoration:none}
+.btn.ghost{background:#2a2548;color:var(--ink)}.btn.small{padding:8px 16px;font-size:14px}
+.btn.lime{background:var(--accent2);color:#0d0a1c}
+h1{font-size:clamp(38px,6.4vw,70px);font-weight:800;letter-spacing:-2.5px;line-height:1;margin:0 0 18px}
+h2{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-1.5px;line-height:1.05;margin:0 0 14px}
+h3{font-size:18px;margin:0 0 6px}
+.kick{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.lead{font-size:19px;color:#cfc9f0;max-width:520px}
+.mute{color:var(--mute)}
+section{padding:72px 0}
+.card{background:var(--card);border-radius:var(--r);padding:22px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.num{font-size:44px;font-weight:800;letter-spacing:-2px;color:var(--accent2)}
+/* phone mock */
+.phone{width:320px;height:560px;background:var(--bg);border:9px solid #000;border-radius:38px;box-shadow:0 20px 70px rgba(255,93,143,.25);padding:16px 14px;display:flex;flex-direction:column;overflow:hidden;position:relative;flex:none}
+.prog{display:flex;gap:4px;margin:4px 0 8px}.prog i{flex:1;height:6px;border-radius:3px;background:#2a2548}.prog i.done{background:#6a60b0}.prog i.cur{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.qname{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1.05;margin:2px 0 8px}
+.scale{flex:1;display:flex;flex-direction:column;gap:3px;min-height:0}
+.band{flex:1;display:flex;align-items:center;gap:10px;padding:0 14px;border-radius:11px;background:color-mix(in srgb,var(--c) 16%,#13102a);border-left:6px solid var(--c);text-align:left;transition:transform .12s}
+.band b{font-size:17px;width:24px}.band span{font-size:11px;color:var(--mute)}
+.band:hover{transform:scale(1.02)}.band.on{background:var(--c);color:#0d0a1c;transform:scale(1.04);box-shadow:0 0 22px var(--c)}.band.on span{color:#0d0a1c}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{border-radius:18px;padding:10px 12px;background:var(--c);color:#0d0a1c;min-height:70px;display:flex;flex-direction:column;justify-content:space-between}
+.tile small{font-weight:700;font-size:11px}.tile b{font-size:26px;letter-spacing:-1px}
+/* install steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;counter-reset:s}
+.steps li{list-style:none;background:var(--card);border-radius:var(--r);padding:20px;counter-increment:s}
+.steps li::before{content:counter(s);display:block;font-size:36px;font-weight:800;color:var(--accent);letter-spacing:-1.5px}
+.steps{padding:0;margin:0}
+footer{padding:36px 0 60px;color:var(--mute);font-size:13px;border-top:1px solid var(--line)}
+.glow{position:absolute;pointer-events:none;border-radius:50%;filter:blur(90px);opacity:.35}

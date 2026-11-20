@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500" font-family="Helvetica, Arial, sans-serif">
+  <!-- Call-sequence template: the calls between objects during one operation, top to bottom in
+       the order they happen. Use it when the order matters more than the structure: lazy
+       initialisation, a retry, a callback. Copy it, rename the participants, delete what the
+       view does not use, and remove from the legend every entry it no longer contains.
+       Participants are 160 wide with lifelines 220 apart (x = 115, 335, 555, 775); one message
+       per 30 to 40px of height. -->
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="#eef4f8"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#9db8c9" stroke-width="1.5"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+    <marker id="open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#222" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <style>
+    .box { stroke: #222; stroke-width: 1.5; }
+    .focus { fill: #e8652b; }
+    .obj { fill: #ffffff; }
+    .ext { fill: url(#hatch); }
+    .life { fill: none; stroke: #777; stroke-width: 1.1; stroke-dasharray: 4 4; }
+    .act { fill: #ffffff; stroke: #222; stroke-width: 1.2; }
+    .frag { fill: none; stroke: #777; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .flbl { font-size: 12px; fill: #555; font-style: italic; }
+    .note { fill: #ffffff; stroke: #222; stroke-width: 1.2; }
+    .anchor { fill: none; stroke: #555; stroke-width: 1.1; stroke-dasharray: 3 3; }
+    .t1 { font-size: 13px; fill: #111; text-anchor: middle; }
+    .t2 { font-size: 11px; fill: #333; text-anchor: middle; }
+    .msg { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .code { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; white-space: pre; }
+    .lbl { font-size: 11px; fill: #333; }
+    .edge { fill: none; stroke: #222; stroke-width: 1.3; }
+    .dash { fill: none; stroke: #222; stroke-width: 1.3; stroke-dasharray: 5 4; }
+    .title { font-size: 15px; fill: #111; }
+  </style>
+  <rect width="1120" height="500" fill="#ffffff"/>
+
+  <text class="title" x="20" y="28">Graphics — Call sequence (first draw of a proxied image)</text>
+
+  <!-- Lifelines first: everything else is drawn over them. Image's starts below its header,
+       which sits at the height of the call that creates it. -->
+  <path class="life" d="M115,96 V470"/>
+  <path class="life" d="M335,96 V470"/>
+  <path class="life" d="M555,236 V470"/>
+  <path class="life" d="M775,96 V470"/>
+
+  <!-- Fragment: a condition or loop around the messages it governs. -->
+  <rect class="frag" x="255" y="160" width="595" height="160"/>
+  <path d="M255,160 H315 V172 L307,180 H255" fill="#ffffff" stroke="#777" stroke-width="1.2"/>
+  <text class="flbl" x="262" y="175">if</text>
+  <text class="flbl" x="352" y="176">[self._image is None]</text>
+
+  <!-- Activation bars: the time a call is on the stack. -->
+  <rect class="act" x="110" y="120" width="10" height="320"/>
+  <rect class="act" x="330" y="130" width="10" height="290"/>
+  <rect class="act" x="550" y="245" width="10" height="70"/>
+  <rect class="act" x="550" y="360" width="10" height="40"/>
+  <rect class="act" x="770" y="275" width="10" height="20"/>
+
+  <!-- Messages: calls solid with a filled triangle, returns dashed with a chevron. -->
+  <path class="edge" d="M120,130 H328" marker-end="url(#arrow)"/>
+  <text class="msg" x="132" y="123">draw()</text>
+
+  <path class="edge" d="M340,216 H473" marker-end="url(#arrow)"/>
+  <text class="msg" x="350" y="209">Image(self._path)</text>
+
+  <path class="edge" d="M560,280 H768" marker-end="url(#arrow)"/>
+  <text class="msg" x="572" y="273">open(path)</text>
+  <path class="dash" d="M770,295 H562" marker-end="url(#open)"/>
+  <text class="lbl" x="660" y="309">PIL.Image</text>
+
+  <path class="edge" d="M340,360 H548" marker-end="url(#arrow)"/>
+  <text class="msg" x="352" y="353">draw()</text>
+  <path class="dash" d="M550,400 H342" marker-end="url(#open)"/>
+  <text class="lbl" x="440" y="393">None</text>
+
+  <path class="dash" d="M330,420 H122" marker-end="url(#open)"/>
+  <text class="lbl" x="210" y="413">None</text>
+
+  <!-- Participants: name in the title, type in the subtitle; the orange one is the object the
+       sequence is about, hatched is a library. -->
+  <rect class="box obj" x="35" y="56" width="160" height="40"/>
+  <text class="t1" x="115" y="73">editor</text>
+  <text class="t2" x="115" y="88">DocumentEditor</text>
+
+  <rect class="box focus" x="255" y="56" width="160" height="40"/>
+  <text class="t1" x="335" y="73">proxy</text>
+  <text class="t2" x="335" y="88">ImageProxy</text>
+
+  <rect class="box obj" x="475" y="196" width="160" height="40"/>
+  <text class="t1" x="555" y="213">self._image</text>
+  <text class="t2" x="555" y="228">Image</text>
+
+  <rect class="box ext" x="695" y="56" width="160" height="40"/>
+  <text class="t1" x="775" y="73">PIL.Image</text>
+  <text class="t2" x="775" y="88">Pillow</text>
+
+  <!-- Note anchored to the fragment's right edge. -->
+  <path class="anchor" d="M854,200 H898"/>
+  <circle cx="851" cy="200" r="3.5" fill="#ffffff" stroke="#222" stroke-width="1.2"/>
+  <path class="note" d="M900,170 H1083 L1095,182 V230 H900 Z"/>
+  <path class="note" d="M1083,170 V182 H1095"/>
+  <text class="lbl" x="912" y="192">Only on the first draw();</text>
+  <text class="lbl" x="912" y="208">later calls skip to draw()</text>
+  <text class="lbl" x="912" y="224">on the cached Image.</text>
+
+  <!-- Legend: list only the types this view uses. -->
+  <rect x="900" y="250" width="205" height="226" fill="#ffffff" stroke="#222" stroke-width="1"/>
+  <text x="912" y="270" font-size="13" font-weight="bold" fill="#111">Legend</text>
+  <rect class="box focus" x="912" y="282" width="18" height="13"/>
+  <text class="lbl" x="938" y="293">Object this view is about</text>
+  <rect class="box obj" x="912" y="304" width="18" height="13"/>
+  <text class="lbl" x="938" y="315">Object (header lower: created)</text>
+  <rect class="box ext" x="912" y="326" width="18" height="13"/>
+  <text class="lbl" x="938" y="337">Library object or module</text>
+  <rect class="act" x="917" y="347" width="8" height="16"/>
+  <text class="lbl" x="938" y="359">Call in progress</text>
+  <rect class="frag" x="912" y="370" width="18" height="13"/>
+  <text class="lbl" x="938" y="381">if / for / try around calls</text>
+  <path class="note" d="M912,392 H925 L930,397 V405 H912 Z"/>
+  <text class="lbl" x="938" y="403">Note</text>
+  <path class="edge" d="M912,423 H932" marker-end="url(#arrow)"/>
+  <text class="lbl" x="938" y="427">Call (method, arguments)</text>
+  <path class="dash" d="M912,445 H932" marker-end="url(#open)"/>
+  <text class="lbl" x="938" y="449">Return (type returned)</text>
+  <path class="life" d="M912,465 H932"/>
+  <text class="lbl" x="938" y="469">Lifeline</text>
+</svg>

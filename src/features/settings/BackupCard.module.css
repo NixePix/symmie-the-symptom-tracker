@@ -1,0 +1,46 @@
+/* Shared by ExportCard and BackupCard. */
+.hint {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: var(--mute);
+}
+
+.dates {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.dates > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.file {
+  display: block;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.file input {
+  display: block;
+  margin-top: 6px;
+  max-width: 100%;
+  color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.error {
+  color: var(--bad);
+  font-size: 13px;
+}
+
+.ok {
+  color: var(--ok);
+  font-size: 13px;
+}

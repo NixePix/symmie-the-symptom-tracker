@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="900" viewBox="0 0 1300 900" font-family="Helvetica, Arial, sans-serif">
+  <!-- Class-structure view of how diary data is typed, persisted and provided to components. The sample members are the intended signatures, not code that exists yet. -->
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="#eef4f8"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#9db8c9" stroke-width="1.5"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+    <marker id="open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#222" stroke-width="1.5"/>
+    </marker>
+    <marker id="super" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M1,1 L11,6 L1,11 z" fill="#ffffff" stroke="#222" stroke-width="1.2"/>
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7">
+      <circle cx="5" cy="5" r="4" fill="#222"/>
+    </marker>
+  </defs>
+  <style>
+    .box { stroke: #222; stroke-width: 1.5; }
+    .pub { fill: #e8652b; }
+    .priv { fill: #ffffff; }
+    .ext { fill: url(#hatch); }
+    .type { fill: #ffffff; stroke: #222; stroke-width: 1.5; }
+    .sep { stroke: #222; stroke-width: 1; }
+    .note { fill: #ffffff; stroke: #222; stroke-width: 1.2; }
+    .region { fill: none; stroke: #777; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .rlbl { font-size: 12px; fill: #555; font-style: italic; }
+    .t1 { font-size: 13px; fill: #111; text-anchor: middle; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .sig { font-size: 11px; fill: #333; text-anchor: middle; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .t2 { font-size: 11px; fill: #333; text-anchor: middle; }
+    .cname { font-size: 13px; fill: #111; text-anchor: middle; }
+    .abs { font-style: italic; }
+    .stereo { font-size: 10px; fill: #555; text-anchor: middle; }
+    .mem { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .code { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; white-space: pre; }
+    .msg { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .lbl { font-size: 11px; fill: #333; }
+    .edge { fill: none; stroke: #222; stroke-width: 1.3; }
+    .dash { fill: none; stroke: #222; stroke-width: 1.3; stroke-dasharray: 5 4; }
+    .anchor { fill: none; stroke: #555; stroke-width: 1.1; stroke-dasharray: 3 3; }
+    .life { fill: none; stroke: #777; stroke-width: 1.1; stroke-dasharray: 4 4; }
+    .act { fill: #ffffff; stroke: #222; stroke-width: 1.2; }
+    .frag { fill: none; stroke: #777; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .flbl { font-size: 12px; fill: #555; font-style: italic; }
+    .title { font-size: 15px; fill: #111; }
+  </style>
+  <rect width="1300" height="900" fill="#ffffff"/>
+  <text class="title" x="20" y="28">Symmie web client: data layer and the DiaryProvider</text>
+
+  <rect class="region" x="25" y="50" width="560" height="330"/>
+  <text class="rlbl" x="35" y="67">src/state/DiaryProvider.tsx</text>
+  <rect class="region" x="625" y="50" width="640" height="330"/>
+  <text class="rlbl" x="635" y="67">src/domain/diary.ts</text>
+  <rect class="region" x="25" y="420" width="800" height="450"/>
+  <text class="rlbl" x="35" y="437">src/data</text>
+  <rect class="region" x="855" y="420" width="410" height="450"/>
+  <text class="rlbl" x="865" y="437">src/domain/types.ts</text>
+  <path class="dash" d="M295,140 H345" marker-end="url(#arrow)"/>
+  <text class="lbl" x="304" y="132">builds</text>
+  <path class="edge" d="M270,250 V345 H345" marker-end="url(#arrow)"/>
+  <text class="lbl" x="276" y="300">provides</text>
+  <path class="edge" d="M100,250 V470" marker-end="url(#arrow)"/>
+  <text class="lbl" x="107" y="405">repository</text>
+  <path class="edge" d="M170,100 V84 H1115 V100" marker-end="url(#arrow)"/>
+  <text class="lbl" x="700" y="79">useReducer</text>
+  <path class="edge" d="M995,130 H945" marker-end="url(#arrow)"/>
+  <text class="lbl" x="956" y="122">handles</text>
+  <path class="edge" d="M460,470 V450 H175 V468" marker-end="url(#super)"/>
+  <path class="edge" d="M705,470 V450 H460"/>
+  <path class="edge" d="M805,520 H875" marker-end="url(#arrow)"/>
+  <text class="lbl" x="806" y="512">load()</text>
+  <path class="edge" d="M1055,520 H1095" marker-end="url(#arrow)"/>
+  <text class="lbl" x="1065" y="512">[*]</text>
+  <path class="edge" d="M460,600 V650" marker-end="url(#open)"/>
+  <text class="lbl" x="467" y="630">opens</text>
+  <path class="anchor" d="M565,203 H605 V320 H645"/>
+  <rect class="box priv" x="45" y="100" width="250" height="140"/>
+  <rect class="box pub" x="45" y="100" width="250" height="42"/>
+  <text class="stereo" x="170.0" y="113">«component»</text>
+  <text class="cname" x="170.0" y="131">DiaryProvider</text>
+  <line class="sep" x1="45" y1="142" x2="295" y2="142"/>
+  <text class="mem" x="55" y="159">props: { repository, children }</text>
+  <line class="sep" x1="45" y1="168" x2="295" y2="168"/>
+  <text class="mem" x="55" y="185">state: DiaryState</text>
+  <text class="mem" x="55" y="201">actions: DiaryActions</text>
+  <line class="sep" x1="45" y1="210" x2="295" y2="210"/>
+  <text class="mem" x="55" y="227">on mount: repository.load()</text>
+
+  <rect class="box priv" x="345" y="100" width="220" height="184"/>
+  <text class="stereo" x="455.0" y="113">«interface»</text>
+  <text class="cname abs" x="455.0" y="131">DiaryActions</text>
+  <line class="sep" x1="345" y1="142" x2="565" y2="142"/>
+  <text class="mem abs" x="355" y="159">addSymptom(name, kind)</text>
+  <text class="mem abs" x="355" y="175">renameSymptom(id, name)</text>
+  <text class="mem abs" x="355" y="191">archiveSymptom(id)</text>
+  <text class="mem abs" x="355" y="207">setValue(day, id, v)</text>
+  <text class="mem abs" x="355" y="223">clearValue(day, id)</text>
+  <text class="mem abs" x="355" y="239">setNote(day, text)</text>
+  <text class="mem abs" x="355" y="255">confirmYesterday(day)</text>
+  <text class="mem abs" x="355" y="271">restore(diary)</text>
+
+  <rect class="box ext" x="345" y="320" width="220" height="50"/>
+  <text class="t1" x="455.0" y="342.0">React contexts</text>
+  <text class="sig" x="455.0" y="358.0">DiaryState, DiaryActions</text>
+  <rect class="box priv" x="645" y="100" width="300" height="168"/>
+  <text class="stereo" x="795.0" y="113">«union type»</text>
+  <text class="cname" x="795.0" y="131">DiaryAction</text>
+  <line class="sep" x1="645" y1="142" x2="945" y2="142"/>
+  <text class="mem" x="655" y="159">| { type: &quot;addSymptom&quot;, name, kind }</text>
+  <text class="mem" x="655" y="175">| { type: &quot;renameSymptom&quot;, id, name }</text>
+  <text class="mem" x="655" y="191">| { type: &quot;archiveSymptom&quot;, id }</text>
+  <text class="mem" x="655" y="207">| { type: &quot;setValue&quot;, day, id, value }</text>
+  <text class="mem" x="655" y="223">| { type: &quot;clearValue&quot;, day, id }</text>
+  <text class="mem" x="655" y="239">| { type: &quot;setNote&quot;, day, text }</text>
+  <text class="mem" x="655" y="255">| { type: &quot;restore&quot;, diary }</text>
+
+  <rect class="box priv" x="995" y="100" width="250" height="88"/>
+  <text class="stereo" x="1120.0" y="113">«function»</text>
+  <text class="cname" x="1120.0" y="131">diaryReducer</text>
+  <line class="sep" x1="995" y1="142" x2="1245" y2="142"/>
+  <text class="mem" x="1005" y="159">(Diary, DiaryAction) -&gt; Diary</text>
+  <text class="mem" x="1005" y="175">pure: no I/O, no clock</text>
+
+  <rect class="box priv" x="45" y="470" width="260" height="136"/>
+  <text class="stereo" x="175.0" y="483">«interface»</text>
+  <text class="cname abs" x="175.0" y="501">DiaryRepository</text>
+  <line class="sep" x1="45" y1="512" x2="305" y2="512"/>
+  <text class="mem abs" x="55" y="529">load(): Promise&lt;Diary&gt;</text>
+  <text class="mem abs" x="55" y="545">putSymptom(s)</text>
+  <text class="mem abs" x="55" y="561">putEntry(day, id, value?)</text>
+  <text class="mem abs" x="55" y="577">putNote(day, text)</text>
+  <text class="mem abs" x="55" y="593">replaceAll(diary)</text>
+
+  <rect class="box priv" x="345" y="470" width="230" height="116"/>
+  <text class="cname" x="460.0" y="487">IdbDiaryRepository</text>
+  <line class="sep" x1="345" y1="498" x2="575" y2="498"/>
+  <text class="mem" x="355" y="515">stores: symptoms, entries, notes</text>
+  <line class="sep" x1="345" y1="524" x2="575" y2="524"/>
+  <text class="mem" x="355" y="541">load()</text>
+  <text class="mem" x="355" y="557">put…()</text>
+  <text class="mem" x="355" y="573">replaceAll()  // one transaction</text>
+
+  <rect class="box priv" x="605" y="470" width="200" height="84"/>
+  <text class="cname" x="705.0" y="487">MemoryDiaryRepository</text>
+  <line class="sep" x1="605" y1="498" x2="805" y2="498"/>
+  <text class="mem" x="615" y="515">diary: Diary</text>
+  <line class="sep" x1="605" y1="524" x2="805" y2="524"/>
+  <text class="mem" x="615" y="541">same methods, for tests</text>
+
+  <rect class="box ext" x="345" y="650" width="230" height="50"/>
+  <text class="t1" x="460.0" y="672.0">idb</text>
+  <text class="sig" x="460.0" y="688.0">IndexedDB wrapper</text>
+  <rect class="box priv" x="875" y="470" width="180" height="90"/>
+  <text class="cname" x="965.0" y="487">Diary</text>
+  <line class="sep" x1="875" y1="498" x2="1055" y2="498"/>
+  <text class="mem" x="885" y="515">symptoms: Symptom[]</text>
+  <text class="mem" x="885" y="531">entries: EntryMap</text>
+  <text class="mem" x="885" y="547">notes: NoteMap</text>
+
+  <rect class="box priv" x="1095" y="470" width="150" height="106"/>
+  <text class="cname" x="1170.0" y="487">Symptom</text>
+  <line class="sep" x1="1095" y1="498" x2="1245" y2="498"/>
+  <text class="mem" x="1105" y="515">id: SymptomId</text>
+  <text class="mem" x="1105" y="531">name: string</text>
+  <text class="mem" x="1105" y="547">type: SymptomType</text>
+  <text class="mem" x="1105" y="563">archived?: boolean</text>
+
+  <rect class="box priv" x="875" y="620" width="370" height="90"/>
+  <text class="cname" x="1060.0" y="637">Account</text>
+  <line class="sep" x1="875" y1="648" x2="1245" y2="648"/>
+  <text class="mem" x="885" y="665">name: string</text>
+  <text class="mem" x="885" y="681">salt, hash: base64 strings</text>
+  <text class="mem" x="885" y="697">iterations: number  // PBKDF2-SHA256</text>
+
+  <path class="note" d="M645,300 H1193 L1205,312 V356 H645 Z"/>
+  <path class="note" d="M1193,300 V312 H1205"/>
+  <text class="code" x="655" y="319">setValue(day, id, v) in DiaryProvider:</text>
+  <text class="code" x="655" y="333">  dispatch({ type: &quot;setValue&quot;, day, id, value: v })   // screen updates first</text>
+  <text class="code" x="655" y="347">  repository.putEntry(day, id, v).catch(() =&gt; toast(&quot;Could not save&quot;))</text>
+  <circle cx="561" cy="203" r="3.5" fill="#ffffff" stroke="#222" stroke-width="1.2"/>
+
+  <rect x="45" y="650" width="230" height="228" fill="#ffffff" stroke="#222" stroke-width="1"/>
+  <text x="57" y="670" font-size="13" font-weight="bold" fill="#111">Legend</text>
+  <rect class="box priv" x="57" y="682" width="18" height="13"/><rect class="box pub" x="57" y="682" width="18" height="5"/>
+  <text class="lbl" x="83" y="693">Class this view is about</text>
+  <rect class="box priv" x="57" y="704" width="18" height="13"/>
+  <text class="lbl" x="83" y="715">Class or type</text>
+  <rect class="box priv" x="57" y="726" width="18" height="13"/><text x="60" y="736" font-size="10" font-style="italic" fill="#111">A</text>
+  <text class="lbl" x="83" y="737">Interface</text>
+  <rect class="box ext" x="57" y="748" width="18" height="13"/>
+  <text class="lbl" x="83" y="759">Library</text>
+  <rect class="region" x="57" y="770" width="18" height="13"/>
+  <text class="lbl" x="83" y="781">Module (file or folder)</text>
+  <path class="note" d="M57,792 H70 L75,797 V805 H57 Z"/>
+  <text class="lbl" x="83" y="803">Note: code sketch</text>
+  <path class="edge" d="M57,821 H77" marker-end="url(#super)"/>
+  <text class="lbl" x="83" y="825">Implements</text>
+  <path class="edge" d="M57,843 H77" marker-end="url(#arrow)"/>
+  <text class="lbl" x="83" y="847">Holds, calls or returns</text>
+  <path class="dash" d="M57,865 H77" marker-end="url(#arrow)"/>
+  <text class="lbl" x="83" y="869">Creates</text>
+</svg>

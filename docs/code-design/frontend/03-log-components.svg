@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="770" viewBox="0 0 1500 770" font-family="Helvetica, Arial, sans-serif">
+  <!-- Component tree of src/features/log. Rounded boxes are hooks. Vertical lists are children rendered by the box above them. -->
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="#eef4f8"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#9db8c9" stroke-width="1.5"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+    <marker id="open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#222" stroke-width="1.5"/>
+    </marker>
+    <marker id="super" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M1,1 L11,6 L1,11 z" fill="#ffffff" stroke="#222" stroke-width="1.2"/>
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7">
+      <circle cx="5" cy="5" r="4" fill="#222"/>
+    </marker>
+  </defs>
+  <style>
+    .box { stroke: #222; stroke-width: 1.5; }
+    .pub { fill: #e8652b; }
+    .priv { fill: #ffffff; }
+    .ext { fill: url(#hatch); }
+    .type { fill: #ffffff; stroke: #222; stroke-width: 1.5; }
+    .sep { stroke: #222; stroke-width: 1; }
+    .note { fill: #ffffff; stroke: #222; stroke-width: 1.2; }
+    .region { fill: none; stroke: #777; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .rlbl { font-size: 12px; fill: #555; font-style: italic; }
+    .t1 { font-size: 13px; fill: #111; text-anchor: middle; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .sig { font-size: 11px; fill: #333; text-anchor: middle; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .t2 { font-size: 11px; fill: #333; text-anchor: middle; }
+    .cname { font-size: 13px; fill: #111; text-anchor: middle; }
+    .abs { font-style: italic; }
+    .stereo { font-size: 10px; fill: #555; text-anchor: middle; }
+    .mem { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .code { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; white-space: pre; }
+    .msg { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .lbl { font-size: 11px; fill: #333; }
+    .edge { fill: none; stroke: #222; stroke-width: 1.3; }
+    .dash { fill: none; stroke: #222; stroke-width: 1.3; stroke-dasharray: 5 4; }
+    .anchor { fill: none; stroke: #555; stroke-width: 1.1; stroke-dasharray: 3 3; }
+    .life { fill: none; stroke: #777; stroke-width: 1.1; stroke-dasharray: 4 4; }
+    .act { fill: #ffffff; stroke: #222; stroke-width: 1.2; }
+    .frag { fill: none; stroke: #777; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .flbl { font-size: 12px; fill: #555; font-style: italic; }
+    .title { font-size: 15px; fill: #111; }
+  </style>
+  <rect width="1500" height="770" fill="#ffffff"/>
+  <text class="title" x="20" y="28">Symmie web client: components of the log screen</text>
+
+  <rect class="region" x="25" y="50" width="1450" height="700"/>
+  <text class="rlbl" x="35" y="67">src/features/log</text>
+  <path class="edge" d="M600,108 H520" marker-end="url(#arrow)"/>
+  <text class="lbl" x="540" y="101">calls</text>
+  <path class="edge" d="M800,108 H890" marker-end="url(#arrow)"/>
+  <text class="lbl" x="830" y="101">calls</text>
+  <path class="edge" d="M1080,108 H1130" marker-end="url(#arrow)"/>
+  <text class="lbl" x="1087" y="101">calls</text>
+  <path class="edge" d="M700.0,131 V180.5 H145.0 V230" marker-end="url(#arrow)"/>
+  <path class="edge" d="M700.0,131 V180.5 H375.0 V230" marker-end="url(#arrow)"/>
+  <path class="edge" d="M700.0,131 V180.5 H605.0 V230" marker-end="url(#arrow)"/>
+  <path class="edge" d="M700.0,131 V180.5 H835.0 V230" marker-end="url(#arrow)"/>
+  <path class="edge" d="M700.0,131 V180.5 H1065.0 V230" marker-end="url(#arrow)"/>
+  <path class="edge" d="M700.0,131 V180.5 H1295.0 V230" marker-end="url(#arrow)"/>
+  <path class="edge" d="M289,276 V320.0"/>
+  <path class="edge" d="M289,320.0 H303" marker-end="url(#arrow)"/>
+  <path class="edge" d="M519,276 V320.0"/>
+  <path class="edge" d="M519,320.0 H533" marker-end="url(#arrow)"/>
+  <path class="edge" d="M749,276 V528.0"/>
+  <path class="edge" d="M749,320.0 H763" marker-end="url(#arrow)"/>
+  <path class="edge" d="M749,372.0 H763" marker-end="url(#arrow)"/>
+  <path class="edge" d="M749,424.0 H763" marker-end="url(#arrow)"/>
+  <path class="edge" d="M749,476.0 H763" marker-end="url(#arrow)"/>
+  <path class="edge" d="M749,528.0 H763" marker-end="url(#arrow)"/>
+  <path class="edge" d="M979,276 V320"/>
+  <path class="edge" d="M979,320 H993" marker-end="url(#arrow)"/>
+  <path class="edge" d="M979,476 V320"/>
+  <path class="edge" d="M979,476 H993" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1003,340 V372 H1013" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1209,276 V424.0"/>
+  <path class="edge" d="M1209,320.0 H1223" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1209,372.0 H1223" marker-end="url(#arrow)"/>
+  <path class="edge" d="M1209,424.0 H1223" marker-end="url(#arrow)"/>
+  <rect class="box priv" x="45" y="230" width="200" height="46"/>
+  <text class="t1" x="145.0" y="250.0">DayHeader</text>
+  <text class="sig" x="145.0" y="266.0">title, pick-date button</text>
+  <rect class="box priv" x="275" y="230" width="200" height="46"/>
+  <text class="t1" x="375.0" y="250.0">DayStrip</text>
+  <text class="sig" x="375.0" y="266.0">last 21 days</text>
+  <rect class="box priv" x="303" y="300" width="172" height="40"/>
+  <text class="t1" x="389.0" y="317.0">DayChip</text>
+  <text class="sig" x="389.0" y="333.0">date, fraction logged</text>
+  <rect class="box priv" x="505" y="230" width="200" height="46"/>
+  <text class="t1" x="605.0" y="250.0">StepProgress</text>
+  <text class="sig" x="605.0" y="266.0">one segment per symptom</text>
+  <rect class="box priv" x="533" y="300" width="172" height="40"/>
+  <text class="t1" x="619.0" y="317.0">ProgressSegment</text>
+  <text class="sig" x="619.0" y="333.0">done, current, onPick</text>
+  <rect class="box priv" x="735" y="230" width="200" height="46"/>
+  <text class="t1" x="835.0" y="250.0">SymptomStep</text>
+  <text class="sig" x="835.0" y="266.0">symptom, yesterday</text>
+  <rect class="box priv" x="763" y="300" width="172" height="40"/>
+  <text class="t1" x="849.0" y="317.0">SeverityScale</text>
+  <text class="sig" x="849.0" y="333.0">value, onPick</text>
+  <rect class="box priv" x="763" y="352" width="172" height="40"/>
+  <text class="t1" x="849.0" y="369.0">YesNoChoice</text>
+  <text class="sig" x="849.0" y="385.0">value, onPick</text>
+  <rect class="box priv" x="763" y="404" width="172" height="40"/>
+  <text class="t1" x="849.0" y="421.0">SameAsYesterday</text>
+  <text class="sig" x="849.0" y="437.0">yesterday, onConfirm</text>
+  <rect class="box priv" x="763" y="456" width="172" height="40"/>
+  <text class="t1" x="849.0" y="473.0">ConfirmAllPill</text>
+  <text class="sig" x="849.0" y="489.0">count, onConfirm</text>
+  <rect class="box priv" x="763" y="508" width="172" height="40"/>
+  <text class="t1" x="849.0" y="525.0">StepNav</text>
+  <text class="sig" x="849.0" y="541.0">back, skip or next</text>
+  <rect class="box priv" x="965" y="230" width="200" height="46"/>
+  <text class="t1" x="1065.0" y="250.0">DayRecap</text>
+  <text class="sig" x="1065.0" y="266.0">tiles and the note</text>
+  <rect class="box priv" x="993" y="300" width="172" height="40"/>
+  <text class="t1" x="1079.0" y="317.0">SymptomTileGrid</text>
+  <text class="sig" x="1079.0" y="333.0">symptoms, values</text>
+  <rect class="box priv" x="1013" y="352" width="152" height="40"/>
+  <text class="t1" x="1089.0" y="369.0">SymptomTile</text>
+  <text class="sig" x="1089.0" y="385.0">name, value, color</text>
+  <rect class="box priv" x="993" y="456" width="172" height="40"/>
+  <text class="t1" x="1079.0" y="473.0">DayNoteField</text>
+  <text class="sig" x="1079.0" y="489.0">draft, onChange</text>
+  <rect class="box priv" x="1195" y="230" width="200" height="46"/>
+  <text class="t1" x="1295.0" y="250.0">Sheet</text>
+  <text class="sig" x="1295.0" y="266.0">ui/, one open at a time</text>
+  <rect class="box priv" x="1223" y="300" width="172" height="40"/>
+  <text class="t1" x="1309.0" y="317.0">AddSymptomForm</text>
+  <text class="sig" x="1309.0" y="333.0">onSave(name, type)</text>
+  <rect class="box priv" x="1223" y="352" width="172" height="40"/>
+  <text class="t1" x="1309.0" y="369.0">SymptomMenuForm</text>
+  <text class="sig" x="1309.0" y="385.0">rename, archive, clear</text>
+  <rect class="box priv" x="1223" y="404" width="172" height="40"/>
+  <text class="t1" x="1309.0" y="421.0">PickDateForm</text>
+  <text class="sig" x="1309.0" y="437.0">onGo(date)</text>
+  <rect class="box pub" x="600" y="85" width="200" height="46"/>
+  <text class="t1" x="700.0" y="105.0">LogScreen</text>
+  <text class="sig" x="700.0" y="121.0">date from route param</text>
+  <rect class="type" x="330" y="85" width="190" height="46" rx="12"/>
+  <text class="t1" x="425.0" y="105.0">useLogFlow</text>
+  <text class="sig" x="425.0" y="121.0">step, next, back, goTo</text>
+  <rect class="type" x="890" y="85" width="190" height="46" rx="12"/>
+  <text class="t1" x="985.0" y="105.0">useDayLog</text>
+  <text class="sig" x="985.0" y="121.0">values, setValue, …</text>
+  <rect class="type" x="1130" y="85" width="200" height="46" rx="12"/>
+  <text class="t1" x="1230.0" y="105.0">useDiary</text>
+  <text class="sig" x="1230.0" y="121.0">state/DiaryProvider</text>
+  <path class="note" d="M45,600 H673 L685,612 V684 H45 Z"/>
+  <path class="note" d="M673,600 V612 H685"/>
+  <text class="code" x="55" y="619">LogScreen owns:</text>
+  <text class="code" x="55" y="633">  step index   useLogFlow, local; resets when the date changes</text>
+  <text class="code" x="55" y="647">  open sheet   useState&lt;null | &quot;add&quot; | &quot;pick&quot; | { menu: SymptomId }&gt;</text>
+  <text class="code" x="55" y="661">  values       useDayLog(date), a view over DiaryProvider</text>
+  <text class="code" x="55" y="675">DayNoteField keeps a draft and calls setNote 400 ms after typing stops.</text>
+
+  <rect x="1240" y="520" width="220" height="162" fill="#ffffff" stroke="#222" stroke-width="1"/>
+  <text x="1252" y="540" font-size="13" font-weight="bold" fill="#111">Legend</text>
+  <rect class="box pub" x="1252" y="552" width="18" height="13"/>
+  <text class="lbl" x="1278" y="563">Route screen</text>
+  <rect class="box priv" x="1252" y="574" width="18" height="13"/>
+  <text class="lbl" x="1278" y="585">Component</text>
+  <rect class="type" x="1252" y="596" width="18" height="13" rx="4"/>
+  <text class="lbl" x="1278" y="607">Hook</text>
+  <rect class="region" x="1252" y="618" width="18" height="13"/>
+  <text class="lbl" x="1278" y="629">Folder</text>
+  <path class="edge" d="M1252,647 H1272" marker-end="url(#arrow)"/>
+  <text class="lbl" x="1278" y="651">Renders or calls</text>
+  <path class="note" d="M1252,662 H1265 L1270,667 V675 H1252 Z"/>
+  <text class="lbl" x="1278" y="673">Note</text>
+</svg>

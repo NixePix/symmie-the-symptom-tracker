@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d0a1c"><title>Symmie – B: Your year in colour</title><link rel="stylesheet" href="shared.css">
+<style>
+.hero{text-align:center;padding-top:30px}.hero .lead{margin:0 auto 22px}
+.heat{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,1fr);gap:3px;margin:34px auto 12px;max-width:960px}
+.heat i{aspect-ratio:1;border-radius:3px;background:var(--c);cursor:pointer;opacity:0;animation:pop .5s forwards;animation-delay:calc(var(--n)*6ms)}
+.heat i:hover,.heat i.sel{outline:2px solid #fff;z-index:1}
+@keyframes pop{to{opacity:1}}
+.read{min-height:48px;font-size:15px}.read b{padding:2px 10px;border-radius:99px;background:var(--c);color:#0d0a1c}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.hb{display:grid;grid-template-columns:34px 1fr 34px;gap:8px;align-items:center;margin:7px 0;font-size:13px}.trk{height:16px;background:#221d40;border-radius:8px;overflow:hidden}.trk i{display:block;height:100%;border-radius:8px;width:0;transition:width 1s}
+.axis{position:relative;height:10px;background:#221d40;border-radius:5px;margin:6px 0;overflow:hidden}.axis::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:#6a60b0}.axis i{position:absolute;top:0;bottom:0}
+.paper{background:#fff;color:#1f1b3a;border-radius:16px;padding:20px;transform:rotate(1.5deg);box-shadow:0 20px 50px #0008}.paper .mute{color:#7b7899}
+.paper .row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;font-size:13px;padding:6px 0;border-bottom:1px solid #e6e3f7}
+</style></head><body><div class="proto-bar">Landing prototype · <a href="index.html">all three</a><a href="a.html">A One tap</a><a href="b.html">B Year in colour</a><a href="c.html">C How are you today?</a> · fake data, nothing leaves this page</div>
+<div class="wrap"><nav class="nav"><a class="logo" href="#"><i></i>Symmie</a><a class="btn small" href="#install">Get the app</a></nav>
+<div class="hero"><div class="kick">One square per day</div><h1>See what your year<br>is trying to tell you.</h1>
+<p class="lead">Log a few seconds a day. Symmie turns it into a map of your year, and shows what lines up with what. Tap a square.</p>
+<div class="heat" id="heat"></div><div class="read" id="read">Each square is a day. Teal is fine, red is rough.</div></div>
+
+<section><div class="two"><div><div class="kick">Weekday pattern</div><h2>Mondays, apparently.</h2><p class="lead">Averages by weekday, and by month of the year, so a pattern you only half suspected becomes something you can see.</p></div>
+<div class="card" id="wk"></div></div></section>
+
+<section><div class="two"><div class="card" id="pairs"></div><div><div class="kick">Cross-correlation</div><h2>What goes up together.</h2><p class="lead">Symptom pairs ranked by how strongly they move together. It shows a link, not a cause, and says so on screen.</p></div></div></section>
+
+<section><div class="two"><div><div class="kick">For the doctor visit</div><h2>One page. Last eight weeks.</h2><p class="lead">The graph, your day notes and each symptom's average and worst day, ready to print or share from the phone.</p></div>
+<div class="paper"><b>Symmie summary · 8 weeks</b><div class="mute" style="font-size:12px;margin-bottom:8px">Anna · 14 Sep – 9 Nov</div>
+<div class="row mute"><span>Symptom</span><span>Avg</span><span>Max</span><span>Days</span></div><div class="row"><span>Headache</span><span>4.2</span><span>9</span><span>41</span></div><div class="row"><span>Sleep quality</span><span>5.1</span><span>8</span><span>52</span></div><div class="row"><span>Joint pain</span><span>3.4</span><span>7</span><span>33</span></div></div></div></section>
+
+<section id="install"><h2>Install it. No store needed.</h2>
+<ol class="steps"><li><h3>Open the app in Chrome</h3><p class="mute">Android phone, link below.</p></li><li><h3>Tap "Install app"</h3><p class="mute">Chrome menu ⋮, or the prompt at the bottom.</p></li><li><h3>Back up now and then</h3><p class="mute">Your diary lives on the phone. A backup file moves it to a new one.</p></li></ol>
+<p style="margin-top:24px"><a class="btn lime" href="/app/">Open the app →</a></p></section>
+<footer>Local-only: your diary never leaves the phone. Patterns are descriptive statistics, not medical advice.</footer></div>
+<script>
+const sev=v=>`hsl(${Math.round(170-(v-1)/9*170)} 92% 56%)`;
+let s=7;const rnd=()=>(s=(s*16807)%2147483647)/2147483647;
+const heat=document.getElementById('heat'),read=document.getElementById('read');const D=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const start=new Date(2025,10,10);
+for(let n=0;n<371;n++){const d=new Date(start.getTime()+n*864e5);const wd=(d.getDay()+6)%7;
+ let v=4.6+Math.sin(n/58)*2.6+(wd==0?2:0)+(rnd()-.5)*4;if(rnd()<.06)v=1;v=Math.max(1,Math.min(10,Math.round(v)));
+ const i=document.createElement('i');i.style.setProperty('--c',sev(v));i.style.setProperty('--n',n);
+ i.onclick=()=>{heat.querySelectorAll('.sel').forEach(x=>x.classList.remove('sel'));i.classList.add('sel');read.innerHTML=D[wd]+' '+d.toDateString().slice(4)+' · headache <b style="--c:'+sev(v)+'">'+v+'/10</b>'};
+ heat.appendChild(i)}
+heat.style.gridTemplateColumns='repeat(53,1fr)';
+const wk=[['Mon',6.1],['Tue',4.2],['Wed',3.9],['Thu',4.4],['Fri',3.6],['Sat',2.8],['Sun',3.3]];
+document.getElementById('wk').innerHTML=wk.map(([d,v])=>'<div class="hb"><span class="mute">'+d+'</span><div class="trk"><i data-w="'+v*10+'%" style="background:'+sev(v)+'"></i></div><b>'+v+'</b></div>').join('');
+new IntersectionObserver((e,o)=>e.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll('.trk i').forEach(i=>i.style.width=i.dataset.w);o.unobserve(x.target)}})).observe(document.getElementById('wk'));
+document.getElementById('pairs').innerHTML=[['Headache','Poor sleep',.72],['Joint pain','Cold weeks',.48],['Headache','Joint pain',-.21]].map(([a,b,r])=>'<div style="margin-bottom:16px"><b>'+a+' <span class="mute">&amp; '+b+'</span></b><div class="axis"><i style="background:'+(r>0?'var(--accent)':'#4dd8ff')+';'+(r>0?'left:50%;width:'+r*50+'%':'right:50%;width:'+(-r)*50+'%')+'"></i></div><span class="mute" style="font-size:12px">'+(r>0?'+':'')+r.toFixed(2)+(Math.abs(r)>.6?' · moves together':Math.abs(r)>.3?' · some link':' · weak')+'</span></div>').join('');
+</script></body></html>

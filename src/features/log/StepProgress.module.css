@@ -1,0 +1,37 @@
+.bar {
+  display: flex;
+  gap: 4px;
+  margin: 6px 0 14px;
+}
+
+.seg {
+  flex: 1;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+/* The visible 6px bar sits inside a taller tap target. */
+.seg::after {
+  content: '';
+  position: absolute;
+  inset: 8px 0;
+  border-radius: 3px;
+  background: var(--line);
+}
+
+.done::after {
+  background: #6a60b0;
+}
+
+.cur::after {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.overview {
+  flex: 0.5;
+}

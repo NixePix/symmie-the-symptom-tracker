@@ -1,0 +1,36 @@
+.field {
+  margin: 12px 0;
+  text-align: left;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin-bottom: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 2px;
+  border: 0;
+  border-bottom: 2px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 18px;
+  color: var(--ink);
+  outline: 0;
+}
+
+.input:focus {
+  border-color: var(--accent);
+}
+
+.error {
+  color: var(--bad);
+  font-size: 13px;
+  margin: 6px 0;
+}

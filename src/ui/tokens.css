@@ -1,0 +1,40 @@
+/* Design tokens. Values come from prototype-b/style.css ("Night shift"); nothing is reused as code. */
+:root {
+  color-scheme: dark;
+
+  --bg: #0d0a1c;
+  --card: #181430;
+  --ink: #f3f0ff;
+  --mute: #8d87b3;
+  --accent: #ff5d8f;
+  --accent2: #c6ff4d;
+  --bad: #ff5d6c;
+  --ok: #c6ff4d;
+  --line: #2a2548;
+  --r: 22px;
+
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* One colour per overlaid line in the evolution graph, in rank order. Values from prototype-b's palette. */
+:root {
+  --c0: #ff5d8f;
+  --c1: #c6ff4d;
+  --c2: #4dd2ff;
+  --c3: #ffb84d;
+  --c4: #b58cff;
+}

@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1610" height="620" viewBox="0 0 1610 620" font-family="Helvetica, Arial, sans-serif">
+  <!-- Call sequence for logging one value. Solid arrows are calls, dashed arrows are returns. Time runs downward. -->
+  <defs>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="6" height="6" fill="#eef4f8"/>
+      <line x1="0" y1="0" x2="0" y2="6" stroke="#9db8c9" stroke-width="1.5"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+    <marker id="open" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#222" stroke-width="1.5"/>
+    </marker>
+    <marker id="super" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="14" markerHeight="14" orient="auto">
+      <path d="M1,1 L11,6 L1,11 z" fill="#ffffff" stroke="#222" stroke-width="1.2"/>
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7">
+      <circle cx="5" cy="5" r="4" fill="#222"/>
+    </marker>
+  </defs>
+  <style>
+    .box { stroke: #222; stroke-width: 1.5; }
+    .pub { fill: #e8652b; }
+    .priv { fill: #ffffff; }
+    .ext { fill: url(#hatch); }
+    .type { fill: #ffffff; stroke: #222; stroke-width: 1.5; }
+    .sep { stroke: #222; stroke-width: 1; }
+    .note { fill: #ffffff; stroke: #222; stroke-width: 1.2; }
+    .region { fill: none; stroke: #777; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .rlbl { font-size: 12px; fill: #555; font-style: italic; }
+    .t1 { font-size: 13px; fill: #111; text-anchor: middle; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .sig { font-size: 11px; fill: #333; text-anchor: middle; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .t2 { font-size: 11px; fill: #333; text-anchor: middle; }
+    .cname { font-size: 13px; fill: #111; text-anchor: middle; }
+    .abs { font-style: italic; }
+    .stereo { font-size: 10px; fill: #555; text-anchor: middle; }
+    .mem { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .code { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; white-space: pre; }
+    .msg { font-size: 11px; fill: #222; font-family: Menlo, Consolas, "Courier New", monospace; }
+    .lbl { font-size: 11px; fill: #333; }
+    .edge { fill: none; stroke: #222; stroke-width: 1.3; }
+    .dash { fill: none; stroke: #222; stroke-width: 1.3; stroke-dasharray: 5 4; }
+    .anchor { fill: none; stroke: #555; stroke-width: 1.1; stroke-dasharray: 3 3; }
+    .life { fill: none; stroke: #777; stroke-width: 1.1; stroke-dasharray: 4 4; }
+    .act { fill: #ffffff; stroke: #222; stroke-width: 1.2; }
+    .frag { fill: none; stroke: #777; stroke-width: 1.2; stroke-dasharray: 6 4; }
+    .flbl { font-size: 12px; fill: #555; font-style: italic; }
+    .title { font-size: 15px; fill: #111; }
+  </style>
+  <rect width="1610" height="620" fill="#ffffff"/>
+  <text class="title" x="20" y="28">Symmie web client: call sequence when the user taps a severity band</text>
+
+  <path class="life" d="M105,96 V560"/>
+  <path class="life" d="M295,96 V560"/>
+  <path class="life" d="M485,96 V560"/>
+  <path class="life" d="M675,96 V560"/>
+  <path class="life" d="M865,96 V560"/>
+  <path class="life" d="M1055,96 V560"/>
+  <path class="life" d="M1245,96 V560"/>
+  <rect class="frag" x="255" y="384" width="300" height="60"/>
+  <path d="M255,384 H300 V394 L294,400 H255" fill="#ffffff" stroke="#777" stroke-width="1.2"/>
+  <text class="flbl" x="261" y="395">if</text><text class="flbl" x="308" y="396">[the step is unchanged]</text>
+  <rect class="frag" x="635" y="460" width="660" height="90"/>
+  <path d="M635,460 H700 V470 L694,476 H635" fill="#ffffff" stroke="#777" stroke-width="1.2"/>
+  <text class="flbl" x="641" y="471">if</text><text class="flbl" x="708" y="472">[the write rejects, usually after the screen has moved on]</text>
+  <rect class="act" x="100" y="135" width="10" height="30"/>
+  <rect class="act" x="290" y="145" width="10" height="200"/>
+  <rect class="act" x="670" y="185" width="10" height="155"/>
+  <rect class="act" x="860" y="225" width="10" height="40"/>
+  <rect class="act" x="1050" y="295" width="10" height="25"/>
+  <rect class="act" x="480" y="415" width="10" height="25"/>
+  <rect class="act" x="1240" y="520" width="10" height="20"/>
+  <path class="edge" d="M110,150 H290" marker-end="url(#arrow)"/>
+  <text class="msg" x="118" y="143">onPick(symptomId, 7)</text>
+  <path class="edge" d="M300,190 H670" marker-end="url(#arrow)"/>
+  <text class="msg" x="308" y="183">actions.setValue(day, id, 7)</text>
+  <path class="edge" d="M680,230 H860" marker-end="url(#arrow)"/>
+  <text class="msg" x="688" y="223">reducer(diary, setValue)</text>
+  <path class="dash" d="M860,260 H680" marker-end="url(#open)"/>
+  <text class="lbl" x="688" y="253">new Diary</text>
+  <path class="edge" d="M680,300 H1050" marker-end="url(#arrow)"/>
+  <text class="msg" x="688" y="293">putEntry(day, id, 7)</text>
+  <path class="dash" d="M670,335 H300" marker-end="url(#open)"/>
+  <text class="lbl" x="308" y="328">void: the screen re-renders with the new Diary</text>
+  <path class="edge" d="M300,362 H350 V374 H302" marker-end="url(#arrow)"/>
+  <text class="msg" x="357" y="370">setTimeout(next, 280)</text>
+  <path class="edge" d="M300,428 H480" marker-end="url(#arrow)"/>
+  <text class="msg" x="308" y="421">next()</text>
+  <path class="dash" d="M1050,503 H680" marker-end="url(#open)"/>
+  <text class="lbl" x="688" y="496">rejects: Error</text>
+  <path class="edge" d="M680,530 H1240" marker-end="url(#arrow)"/>
+  <text class="msg" x="688" y="523">toast(&quot;Could not save&quot;)</text>
+  <rect class="box priv" x="25" y="56" width="160" height="40"/>
+  <text class="t1" x="105" y="81">SeverityScale</text>
+  <rect class="box priv" x="215" y="56" width="160" height="40"/>
+  <text class="t1" x="295" y="81">LogScreen</text>
+  <rect class="box priv" x="405" y="56" width="160" height="40"/>
+  <text class="t1" x="485" y="81">useLogFlow</text>
+  <rect class="box pub" x="595" y="56" width="160" height="40"/>
+  <text class="t1" x="675" y="81">DiaryProvider</text>
+  <rect class="box priv" x="785" y="56" width="160" height="40"/>
+  <text class="t1" x="865" y="81">diaryReducer</text>
+  <rect class="box priv" x="975" y="56" width="160" height="40"/>
+  <text class="t1" x="1055" y="81">IdbDiaryRepository</text>
+  <rect class="box priv" x="1165" y="56" width="160" height="40"/>
+  <text class="t1" x="1245" y="81">ToastProvider</text>
+  <path class="note" d="M40,475 H598 L610,487 V545 H40 Z"/>
+  <path class="note" d="M598,475 V487 H610"/>
+  <text class="code" x="50" y="494">The reducer runs inside the call, so the tapped band is already highlighted</text>
+  <text class="code" x="50" y="508">in the next render. The write to IndexedDB is not awaited: a failed write</text>
+  <text class="code" x="50" y="522">shows a toast and keeps the value in memory until the next load.</text>
+  <text class="code" x="50" y="536">The 280 ms pause lets the user see the choice before the next symptom appears.</text>
+
+  <rect x="1370" y="56" width="225" height="206" fill="#ffffff" stroke="#222" stroke-width="1"/>
+  <text x="1382" y="76" font-size="13" font-weight="bold" fill="#111">Legend</text>
+  <rect class="box pub" x="1382" y="88" width="18" height="13"/>
+  <text class="lbl" x="1408" y="99">Object this view is about</text>
+  <rect class="box priv" x="1382" y="110" width="18" height="13"/>
+  <text class="lbl" x="1408" y="121">Object</text>
+  <rect class="act" x="1387" y="131" width="8" height="16"/>
+  <text class="lbl" x="1408" y="143">Call in progress</text>
+  <rect class="frag" x="1382" y="154" width="18" height="13"/>
+  <text class="lbl" x="1408" y="165">if around calls</text>
+  <path class="note" d="M1382,176 H1395 L1400,181 V189 H1382 Z"/>
+  <text class="lbl" x="1408" y="187">Note</text>
+  <path class="edge" d="M1382,205 H1402" marker-end="url(#arrow)"/>
+  <text class="lbl" x="1408" y="209">Call (method, arguments)</text>
+  <path class="dash" d="M1382,227 H1402" marker-end="url(#open)"/>
+  <text class="lbl" x="1408" y="231">Return (type returned)</text>
+  <path class="life" d="M1382,249 H1402"/>
+  <text class="lbl" x="1408" y="253">Lifeline</text>
+</svg>

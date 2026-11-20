@@ -1,0 +1,25 @@
+.log {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 18px 32px;
+}
+
+.title {
+  margin: 8px 0 4px;
+  font-size: 20px;
+}
+
+.warn {
+  color: var(--bad);
+  font-size: 13px;
+}
+
+.empty {
+  color: var(--mute);
+  margin: 24px 0;
+}
+
+.add {
+  margin-top: 20px;
+}
